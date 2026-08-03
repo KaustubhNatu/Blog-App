@@ -9,7 +9,9 @@ import org.jspecify.annotations.Nullable;
 @Entity(name="users")
 @Getter
 @Setter
+@Builder
 @RequiredArgsConstructor
+@AllArgsConstructor 
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserEntity {
