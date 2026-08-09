@@ -2,7 +2,6 @@ package com.blogapp.blogappapi.articles;
 
 import com.blogapp.blogappapi.users.UserEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.jspecify.annotations.NonNull;
@@ -14,8 +13,10 @@ import java.util.Date;
 @Entity(name="articles")
 @Getter
 @Setter
+@Builder
 @RequiredArgsConstructor
 @ToString
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ArticleEntity {
     @Id
