@@ -1,22 +1,26 @@
 package com.blogapp.blogappapi.users;
 
-import com.blogapp.blogappapi.users.DTOs.CreateUserRequest;
+import com.blogapp.blogappapi.users.dtos.CreateUserRequest;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     public UserEntity createUser(CreateUserRequest u) {
-        var newUser = UserEntity.builder()
-                .username(u.getUsername())
-                //.password(password)  //TODO:Encrypt Password
-                .email(u.getEmail())
-                .build();
+
+        if (userRepository.findByUsername(u.getUsername()).isPresent()) {
+            return userRepository.findByUsername(u.getUsername()).get();
+        }
+        UserEntity newUser = modelMapper.map(u, UserEntity.class);
+        //TODO:Encrypt Password
 
         return userRepository.save(newUser);
 
@@ -31,7 +35,7 @@ public class UserService {
     }
 
     public UserEntity loginUser(String username, String password) {
-        //TODO: check the password 
+        //TODO: check the password
         return userRepository.findByUsername(username).orElseThrow(()->new UserNotFoundException(username));
     }
 

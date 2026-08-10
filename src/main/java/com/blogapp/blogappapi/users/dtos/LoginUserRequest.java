@@ -1,4 +1,4 @@
-package com.blogapp.blogappapi.users.DTOs;
+package com.blogapp.blogappapi.users.dtos;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -7,13 +7,11 @@ import lombok.Setter;
 
 @Data
 @Setter(AccessLevel.NONE)
-public class CreateUserRequest {
+public class LoginUserRequest {
     @NonNull
     private String username;
 
     @NonNull
     private String password;
 
-    @NonNull
-    private String email;
 }

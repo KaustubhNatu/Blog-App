@@ -1,6 +1,6 @@
 package com.blogapp.blogappapi.users;
 
-import com.blogapp.blogappapi.users.DTOs.CreateUserRequest;
+import com.blogapp.blogappapi.users.dtos.CreateUserRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
